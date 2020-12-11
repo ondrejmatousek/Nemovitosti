@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Nemovitosti.DataAccessLayer\Nemovitosti.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\Nemovitosti.ServiceLayer\Nemovitosti.ServiceLayer.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,7 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nemovitosti.DataAccessLayer\Nemovitosti.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\Nemovitosti.DomainModel\Nemovitosti.DomainModel.csproj" />
+  </ItemGroup>
 
 </Project>
