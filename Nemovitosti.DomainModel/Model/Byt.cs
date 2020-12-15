@@ -2,6 +2,7 @@
 
 namespace Nemovitosti.DomainModel.Model
 {
+    [Serializable]
     public class Byt
     {
         public int IdByt { get; set; }

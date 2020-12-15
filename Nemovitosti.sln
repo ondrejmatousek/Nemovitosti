@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nemovitosti.DataAccessLayer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nemovitosti.ServiceLayer", "Nemovitosti.ServiceLayer\Nemovitosti.ServiceLayer.csproj", "{8E472ED2-1BC0-4E0D-9E16-AC34FDB04424}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nemovitosti.Web", "Nemovitosti.Web\Nemovitosti.Web.csproj", "{DF2D5A5B-71CC-4145-B700-EAE488743D90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nemovitosti.Web", "Nemovitosti.Web\Nemovitosti.Web.csproj", "{DF2D5A5B-71CC-4145-B700-EAE488743D90}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Nemovitosti.Database", "Nemovitosti.Database\Nemovitosti.Database.sqlproj", "{2D0C79FD-41F1-486F-A75E-7E4B3A71F40D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nemovitosti.Test", "Nemovitosti.Test\Nemovitosti.Test.csproj", "{C26A8E4A-9CD9-4EC4-A40F-F059237C9832}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{2D0C79FD-41F1-486F-A75E-7E4B3A71F40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D0C79FD-41F1-486F-A75E-7E4B3A71F40D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2D0C79FD-41F1-486F-A75E-7E4B3A71F40D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C26A8E4A-9CD9-4EC4-A40F-F059237C9832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C26A8E4A-9CD9-4EC4-A40F-F059237C9832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C26A8E4A-9CD9-4EC4-A40F-F059237C9832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C26A8E4A-9CD9-4EC4-A40F-F059237C9832}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
