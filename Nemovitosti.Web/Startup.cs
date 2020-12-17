@@ -25,7 +25,7 @@ namespace Nemovitosti.Web
 
             services.AddControllersWithViews();
             #region Datová vrstva
-            services.AddSingleton<IBytDao, BytDao>();
+            services.AddScoped<IBytDao, BytDao>();
             #endregion
 
             #region Servisní vrstva

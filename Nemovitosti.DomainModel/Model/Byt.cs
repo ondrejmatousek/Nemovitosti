@@ -1,8 +1,10 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Nemovitosti.DomainModel.Model
 {
     [Serializable]
+    [Table("Byt")]
     public class Byt
     {
         public int IdByt { get; set; }

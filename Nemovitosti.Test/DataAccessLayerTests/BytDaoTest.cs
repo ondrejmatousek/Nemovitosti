@@ -7,16 +7,9 @@ namespace Nemovitosti.Test.DataAccessLayerTests
 {
     public class BytDaoTest
     {
-        private readonly IBytDao bytDao;
-
-        public BytDaoTest(IBytDao bytDao)
-        {
-            this.bytDao = bytDao;
-        }
-
         [Theory]
         [AutoData]
-        public void UlozANactiTest(Byt byt)
+        public void UlozANactiTest(Byt byt, IBytDao bytDao)
         {
             bytDao.Insert(byt);
             var bytZDb = bytDao.GetById(byt.IdByt);

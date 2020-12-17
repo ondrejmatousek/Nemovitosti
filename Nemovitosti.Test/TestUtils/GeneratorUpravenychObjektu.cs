@@ -1,5 +1,4 @@
 ﻿using AutoFixture;
-using Nemovitosti.Test.TestUtils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 
-namespace Pcr.AutoFixture.GenerovaniDat
+namespace Nemovitosti.Test.TestUtils
 {
     /// <summary>
     /// Generuje objekty, které se částečně liší od svého vzoru.
