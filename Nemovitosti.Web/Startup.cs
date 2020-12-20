@@ -29,7 +29,7 @@ namespace Nemovitosti.Web
             #endregion
 
             #region Servisní vrstva
-            services.AddSingleton<IBytService, BytService>();
+            services.AddScoped<IBytService, BytService>();
             #endregion
         }
 

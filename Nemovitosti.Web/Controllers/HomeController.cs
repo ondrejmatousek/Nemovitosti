@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Nemovitosti.DomainModel.Model;
 using Nemovitosti.ServiceLayer.Interface;
 using Nemovitosti.Web.Models;
 using System.Diagnostics;
@@ -8,17 +8,17 @@ namespace Nemovitosti.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IBytService bytService;
 
-        public HomeController(ILogger<HomeController> logger, IBytService bytService)
+        public HomeController(IBytService bytService)
         {
-            _logger = logger;
             this.bytService = bytService;
         }
 
         public IActionResult Index()
         {
+            var byt = new Byt() { IdByt = 0, Cena = 1, NazevInzeratu = "Byt", VelikostBytu = 3 };
+            bytService.Insert(byt);
             return View();
         }
 
