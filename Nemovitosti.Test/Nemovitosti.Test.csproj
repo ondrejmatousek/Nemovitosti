@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Nemovitosti.CompositionRoot\Nemovitosti.CompositionRoot.csproj" />
     <ProjectReference Include="..\Nemovitosti.DataAccessLayer\Nemovitosti.DataAccessLayer.csproj" />
     <ProjectReference Include="..\Nemovitosti.ServiceLayer\Nemovitosti.ServiceLayer.csproj" />
   </ItemGroup>

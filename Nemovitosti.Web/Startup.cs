@@ -3,10 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Nemovitosti.DataAccessLayer.Implementation;
-using Nemovitosti.DataAccessLayer.Interface;
-using Nemovitosti.ServiceLayer.Implementation;
-using Nemovitosti.ServiceLayer.Interface;
+using Nemovitosti.CompositionRoot;
+using System.Configuration;
 
 namespace Nemovitosti.Web
 {
@@ -22,15 +20,10 @@ namespace Nemovitosti.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            var stringSettings = new ConnectionStringSettings("Connection", Configuration.GetConnectionString("ConnectionStringLocal"));
             services.AddControllersWithViews();
-            #region Datová vrstva
-            services.AddScoped<IBytDao, BytDao>();
-            #endregion
-
-            #region Servisní vrstva
-            services.AddScoped<IBytService, BytService>();
-            #endregion
+            services.AddSession();
+            services.AddSharedData(stringSettings);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,14 +1,15 @@
-﻿using AutoFixture.Xunit2;
-using Nemovitosti.DataAccessLayer.Interface;
+﻿using Nemovitosti.DataAccessLayer.Interface;
 using Nemovitosti.DomainModel.Model;
+using Nemovitosti.Test.TestUtils;
 using Xunit;
 
 namespace Nemovitosti.Test.DataAccessLayerTests
 {
+    [AutoRollback]
     public class BytDaoTest
     {
         [Theory]
-        [AutoData]
+        [AutoDataDI]
         public void UlozANactiTest(Byt byt, IBytDao bytDao)
         {
             bytDao.Insert(byt);

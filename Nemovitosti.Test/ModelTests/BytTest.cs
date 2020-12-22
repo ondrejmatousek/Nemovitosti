@@ -1,7 +1,6 @@
 ﻿using AutoFixture.Xunit2;
 using Nemovitosti.DomainModel.Model;
 using Nemovitosti.Test.TestUtils;
-using Pcr.AutoFixture.GenerovaniDat;
 using Xunit;
 
 namespace Nemovitosti.Test.ModelTests
