@@ -1,5 +1,4 @@
-﻿using AutoFixture.Xunit2;
-using Nemovitosti.DomainModel.Model;
+﻿using Nemovitosti.DomainModel.Model;
 using Nemovitosti.Test.TestUtils;
 using Xunit;
 
@@ -8,7 +7,7 @@ namespace Nemovitosti.Test.ModelTests
     public class DumTest
     {
         [Theory]
-        [AutoData]
+        [AutoDataDI]
         public void EqualsTest(Dum instace)
         {
             var kopie = DeepCopyMaker.DeepCopy<Dum>(instace);
@@ -16,7 +15,7 @@ namespace Nemovitosti.Test.ModelTests
         }
 
         [Theory]
-        [AutoData]
+        [AutoDataDI]
         public void NotEquals(Dum instace)
         {
             var generator = new GeneratorUpravenychObjektu(true);
@@ -27,7 +26,7 @@ namespace Nemovitosti.Test.ModelTests
         }
 
         [Theory]
-        [AutoData]
+        [AutoDataDI]
         public void NotEquals_NepadneNaNull(Dum instace)
         {
             var generator = new GeneratorUpravenychObjektu(true, true);

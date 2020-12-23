@@ -4,6 +4,9 @@ using System.Configuration;
 
 internal class CompositionRootTest : CompositionRootBase
 {
+    //Zajistit čtení ConnectionStringu z appsettings.json v projektu Nemovitosti.Web
+    private readonly string ConnectionStringTest = "Server=LAPTOP-LN53KKBQ\\SQLEXPRESS;Database=Nemovitosti;Trusted_Connection=True;";
+
     public override void Compose()
     {
         var compositionRoot = new CompRoot();
@@ -11,7 +14,9 @@ internal class CompositionRootTest : CompositionRootBase
         //příprava pro AutoDataDryIocAttribute
         IocContainer = compositionRoot.IocContainer;
 
-        ConnectionStringSettings connString = new ConnectionStringSettings("Connection", "Server=LAPTOP-LN53KKBQ\\SQLEXPRESS;Database=Nemovitosti;Trusted_Connection=True;");
+
+        ConnectionStringSettings connString = new ConnectionStringSettings();
+        connString.ConnectionString = ConnectionStringTest;
 
         IocContainer.UseInstance(connString);
     }

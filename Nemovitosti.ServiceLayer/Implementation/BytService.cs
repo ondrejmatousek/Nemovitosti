@@ -15,5 +15,17 @@ namespace Nemovitosti.ServiceLayer.Implementation
         {
             bytDao.Insert(byt);
         }
+        public Byt GetById(int id)
+        {
+            return bytDao.GetById(id);
+        }
+        public void Update(Byt byt)
+        {
+            bytDao.Update(byt);
+        }
+        public void Delete(Byt byt)
+        {
+            bytDao.Delete(byt);
+        }
     }
 }
