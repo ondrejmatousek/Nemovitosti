@@ -19,7 +19,11 @@ namespace Nemovitosti.CompositionRoot
 
             IocContainer.Register<IBytDao, BytDao>(Reuse.Singleton);
             IocContainer.Register<IDumDao, DumDao>(Reuse.Singleton);
+            IocContainer.Register<IPozemekDao, PozemekDao>(Reuse.Singleton);
+
             IocContainer.Register<IBytService, BytService>(Reuse.Singleton);
+            IocContainer.Register<IDumService, DumService>(Reuse.Singleton);
+            IocContainer.Register<IPozemekService, PozemekService>(Reuse.Singleton);
 
             DalInitializer.Init();
         }
@@ -34,8 +38,11 @@ namespace Nemovitosti.CompositionRoot
 
             services.AddSingleton<IBytDao>(s => new BytDao(stringSettings));
             services.AddSingleton<IDumDao>(s => new DumDao(stringSettings));
+            services.AddSingleton<IPozemekDao>(s => new PozemekDao(stringSettings));
+
             services.AddSingleton<IBytService>(s => new BytService(new BytDao(stringSettings)));
             services.AddSingleton<IDumService>(s => new DumService(new DumDao(stringSettings)));
+            services.AddSingleton<IPozemekService>(s => new PozemekService(new PozemekDao(stringSettings)));
 
             return services;
         }

@@ -46,7 +46,7 @@ namespace Nemovitosti.DataAccessLayer.Implementation
             string query = @"UPDATE Nemovitosti.dbo.Byt SET(NazevInzeratu = @NazevInzeratu, Cena = @Cena, VelikostBytu = @VelikostBytu) WHERE Byt.IdByt = @IdByt";
             using (DbConnection dbConnection = new SqlConnection(connString.ConnectionString))
             {
-                Byt bytZDb = dbConnection.Query<Byt>(query, new { byt.IdByt, byt.NazevInzeratu, byt.Cena, byt.VelikostBytu }).SingleOrDefault();
+                Byt bytZDb = dbConnection.Query<Byt>(query, new { IdByt = byt.IdByt, byt.NazevInzeratu, byt.Cena, byt.VelikostBytu }).SingleOrDefault();
             }
         }
 
