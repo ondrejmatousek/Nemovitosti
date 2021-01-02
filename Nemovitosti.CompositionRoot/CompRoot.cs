@@ -1,5 +1,6 @@
 ﻿using DryIoc;
 using Microsoft.Extensions.DependencyInjection;
+using Nemovitosti.CompositionRoot.Aop;
 using Nemovitosti.DataAccessLayer;
 using Nemovitosti.DataAccessLayer.Implementation;
 using Nemovitosti.DataAccessLayer.Interface;
@@ -26,6 +27,12 @@ namespace Nemovitosti.CompositionRoot
             IocContainer.Register<IPozemekService, PozemekService>(Reuse.Singleton);
 
             DalInitializer.Init();
+
+            //logovni vyjimek
+            IocContainer.Register<LoggingAspect>();
+
+
+            IocContainer.Intercept<IBytService, LoggingAspect>();
         }
     }
 
@@ -43,6 +50,10 @@ namespace Nemovitosti.CompositionRoot
             services.AddSingleton<IBytService>(s => new BytService(new BytDao(stringSettings)));
             services.AddSingleton<IDumService>(s => new DumService(new DumDao(stringSettings)));
             services.AddSingleton<IPozemekService>(s => new PozemekService(new PozemekDao(stringSettings)));
+
+            services.AddSingleton<LoggingAspect>();
+
+
 
             return services;
         }

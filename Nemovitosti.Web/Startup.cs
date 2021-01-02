@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Nemovitosti.CompositionRoot;
+using Nemovitosti.Web.Mappers;
+using Nemovitosti.Web.Mappers.Implementation;
 using System.Configuration;
 
 namespace Nemovitosti.Web
@@ -25,6 +27,8 @@ namespace Nemovitosti.Web
             services.AddControllersWithViews();
             services.AddSession();
             services.AddSharedData(stringSettings);
+            //Mimo Core se to dělalo v Global.asax, tedka Mapper doregistruju tady 
+            services.AddSingleton<IMapperWeb, MapperWeb>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,9 +1,9 @@
 ﻿using Castle.DynamicProxy;
 using System;
 
-namespace Nemovitosti.ServiceLayer.Aop
+namespace Nemovitosti.CompositionRoot.Aop
 {
-    public class LoggingAspects : IInterceptor
+    public class LoggingAspect : IInterceptor
     {
         public void Intercept(IInvocation invocation)
         {
@@ -12,10 +12,13 @@ namespace Nemovitosti.ServiceLayer.Aop
                 invocation.Proceed();
             }
 
-            catch (Exception)
+            catch (Exception exception)
             {
-                throw new Exception("V aplikaci došlo k chybě.");
+                throw exception;
             }
+
+
         }
+
     }
 }
