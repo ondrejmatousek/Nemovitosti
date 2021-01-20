@@ -20,11 +20,9 @@ namespace Nemovitosti.Web.Controllers
         public IActionResult Index()
         {
             BytVM bytVM = new BytVM();
-            //var byt = new Byt() { IdByt = 0, Cena = 1, NazevInzeratu = "Byt", VelikostBytu = 3 };
-            //bytService.Insert(byt);
             var bytZDb = bytService.GetById(2);
             bytVM = autoMapper.Map(bytZDb);
-            return View();
+            return View(bytVM);
         }
 
         public IActionResult Privacy()

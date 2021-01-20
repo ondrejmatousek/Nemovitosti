@@ -24,7 +24,7 @@ namespace Nemovitosti.Web
         public void ConfigureServices(IServiceCollection services)
         {
             var stringSettings = new ConnectionStringSettings("Connection", Configuration.GetConnectionString("ConnectionStringLocal"));
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddSession();
             services.AddSharedData(stringSettings);
             //Mimo Core se to dělalo v Global.asax, tedka Mapper doregistruju tady 
