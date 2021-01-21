@@ -1,6 +1,7 @@
 ﻿using Nemovitosti.DataAccessLayer.Interface;
 using Nemovitosti.DomainModel.Model;
 using Nemovitosti.Test.TestUtils;
+using Nemovitosti.Test.TestUtils.AutofixtureCustomization;
 using Xunit;
 
 namespace Nemovitosti.Test.DataAccessLayerTests
@@ -9,7 +10,7 @@ namespace Nemovitosti.Test.DataAccessLayerTests
     public class PozemekDaoTest
     {
         [Theory]
-        [AutoDataDI]
+        [AutoDataCustomizable(typeof(DIContainerCustomization), typeof(ExistujiciHodnotyCiselnikuCustomization))]
         public void UlozANactiTest(Pozemek pozemek, IPozemekDao pozemekDao)
         {
             pozemekDao.Insert(pozemek);

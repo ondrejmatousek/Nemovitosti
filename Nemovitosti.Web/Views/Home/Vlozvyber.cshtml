@@ -1,0 +1,58 @@
+﻿@{ ViewData["Title"] = "Vlozvyber";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="container-fluid UprostredObrazovkyVertikalne">
+    <div class="h2 text-center ">Jaký druh nemovitosti chcete prodat?</div>
+    <hr />
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-2 text-center DivHoverEffect pt-1">
+                    <a href="@Url.Action("Vloz", "Pozemek")">
+                        <img src="@Url.Content("~/pictures/pozemek.png")">
+                        <div style="text-decoration: none;">
+                            <span>Pozemky</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-2 text-center DivHoverEffect pt-1">
+                    <a href="@Url.Action("Vloz", "Byt")">
+                        <img src="@Url.Content("~/pictures/Bytovka.png")" />
+                        <div style="text-decoration: none;">
+                            <span>Byty</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-2 text-center DivHoverEffect pt-1">
+                    <a href="@Url.Action("Vloz", "Dum")">
+                        <img src="@Url.Content("~/pictures/dum2.png")">
+                        <div style="text-decoration: none;">
+                            <span>Domy</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-2 text-center DivHoverEffect pt-1">
+                    <a href="@Url.Action("Vloz", "Komercni")">
+                        <img src="@Url.Content("~/pictures/Komercni.png")">
+                        <div style="text-decoration: none;">
+                            <span>Komerční</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-2 text-center DivHoverEffect pt-1">
+                    <a href="@Url.Action("Vloz", "Ostatni")">
+                        <img src="@Url.Content("~/pictures/Ostatni.png")">
+                        <div style="text-decoration: none;">
+                            <span>Ostatní</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <hr />
+</div>

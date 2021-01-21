@@ -4,36 +4,48 @@
     <div class="col-2"></div>
     <div class="col-8">
         <div class="row">
-            <div class="col-2 text-center">
-                <img src="~/pictures/pozemek.png" style="width:100px;height:100px" />
-                <div>
-                    <span>Pozemky</span>
-                </div>
+            <div class="col-1"></div>
+            <div class="col-2 text-center DivHoverEffect pt-1">
+                <a href="@Url.Action("Index", "Pozemek")">
+                    <img src="@Url.Content("~/pictures/pozemek.png")">
+                    <div style="text-decoration: none;">
+                        <span>Pozemky</span>
+                    </div>
+                </a>
             </div>
-            <div class="col-2 text-center">
-                <img src="~/pictures/Bytovka.png" style="width:100px;height:100px" />
-                <div>
-                    <span>Byty</span>
-                </div>
+            <div class="col-2 text-center DivHoverEffect pt-1">
+                <a href="@Url.Action("Index", "Byt")">
+                    <img src="@Url.Content("~/pictures/Bytovka.png")" />
+                    <div style="text-decoration: none;">
+                        <span>Byty</span>
+                    </div>
+                </a>
             </div>
-            <div class="col-2 text-center">
-                <img src="~/pictures/dum2.png" style="width:100px;height:100px" />
-                <div>
-                    <span>Domy</span>
-                </div>
+            <div class="col-2 text-center DivHoverEffect pt-1">
+                <a href="@Url.Action("Index", "Dum")">
+                    <img src="@Url.Content("~/pictures/dum2.png")">
+                    <div style="text-decoration: none;">
+                        <span>Domy</span>
+                    </div>
+                </a>
             </div>
-            <div class="col-2 text-center">
-                <img src="~/pictures/komercni.png" style="width:100px;height:100px" />
-                <div>
-                    <span>Business</span>
-                </div>
+            <div class="col-2 text-center DivHoverEffect pt-1">
+                <a href="@Url.Action("Index", "Komercni")">
+                    <img src="@Url.Content("~/pictures/Komercni.png")">
+                    <div style="text-decoration: none;">
+                        <span>Komerční</span>
+                    </div>
+                </a>
             </div>
-            <div class="col-2 text-center">
-                <img src="~/pictures/Ostatni.png" style="width:100px;height:100px" />
-                <div>
-                    <span>Ostatní</span>
-                </div>
+            <div class="col-2 text-center DivHoverEffect pt-1">
+                <a href="@Url.Action("Index", "Ostatni")">
+                    <img src="@Url.Content("~/pictures/Ostatni.png")">
+                    <div style="text-decoration: none;">
+                        <span>Ostatní</span>
+                    </div>
+                </a>
             </div>
+            <div class="col-1"></div>
         </div>
     </div>
     <div class="col-2"></div>

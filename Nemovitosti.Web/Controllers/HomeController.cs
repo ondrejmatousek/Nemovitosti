@@ -25,9 +25,9 @@ namespace Nemovitosti.Web.Controllers
             return View(bytVM);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Vloz()
         {
-            return View();
+            return View("Vlozvyber");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

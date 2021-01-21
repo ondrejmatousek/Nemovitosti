@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Nemovitosti.DataAccessLayer.Interface;
 using Nemovitosti.DomainModel.Model;
+using Nemovitosti.DomainModel.Model.Ciselniky;
 using System;
 using System.Configuration;
 using System.Data.Common;
@@ -19,23 +20,57 @@ namespace Nemovitosti.DataAccessLayer.Implementation
 
         public void Insert(Pozemek pozemek)
         {
-            string query = @"INSERT INTO Nemovitosti.dbo.Pozemek (NazevInzeratu, Cena, VelikostPozemku, DatumVytvoreniInzeratu)
-                             VALUES(@NazevInzeratu, @Cena, @VelikostPozemku, @DatumVytvoreniInzeratu)
+            string query = @"INSERT INTO Nemovitosti.dbo.Pozemek (NazevInzeratu, Cena, VelikostPozemku, DatumVytvoreniInzeratu, TypPozemkuId, ProdejNeboPronajemId)
+                             VALUES(@NazevInzeratu, @Cena, @VelikostPozemku, @DatumVytvoreniInzeratu, @TypPozemkuId, @ProdejNeboPronajemId)
                              SELECT IdPozemek FROM Nemovitosti.dbo.Pozemek WHERE Pozemek.IdPozemek = Scope_Identity()";
             using (DbConnection dbConnection = new SqlConnection(connString.ConnectionString))
             {
                 pozemek.DatumVytvoreniInzeratu = DateTime.Now;
-                Pozemek pozemekZDb = dbConnection.Query<Pozemek>(query, new { pozemek.IdPozemek, pozemek.NazevInzeratu, pozemek.Cena, pozemek.VelikostPozemku, pozemek.DatumVytvoreniInzeratu }).SingleOrDefault();
+                Pozemek pozemekZDb = dbConnection.Query<Pozemek>(query, new
+                {
+                    pozemek.IdPozemek,
+                    pozemek.NazevInzeratu,
+                    pozemek.Cena,
+                    pozemek.VelikostPozemku,
+                    pozemek.DatumVytvoreniInzeratu,
+                    TypPozemkuId = pozemek.TypPozemku.Id,
+                    ProdejNeboPronajemId = pozemek.ProdejNeboPronajem.Id
+                }).SingleOrDefault();
                 pozemek.IdPozemek = pozemekZDb.IdPozemek;
             }
         }
 
         public Pozemek GetById(int id)
         {
-            string query = "SELECT Pozemek.IdPozemek, Pozemek.NazevInzeratu, Pozemek.Cena, Pozemek.VelikostPozemku, Pozemek.DatumVytvoreniInzeratu FROM Nemovitosti.dbo.Pozemek WHERE Pozemek.IdPozemek = @id";
+            string query = "SELECT Pozemek.IdPozemek, Pozemek.NazevInzeratu, Pozemek.Cena, Pozemek.VelikostPozemku, Pozemek.DatumVytvoreniInzeratu, Pozemek.TypPozemkuId," +
+                           " Pozemek.ProdejNeboPronajemId, CiselnikTypPozemku.Id, CiselnikTypPozemku.Nazev, CiselnikProdejNeboPronajem.Id, CiselnikProdejNeboPronajem.Nazev" +
+                           " FROM Nemovitosti.dbo.Pozemek" +
+                           " LEFT OUTER JOIN CiselnikTypPozemku ON Pozemek.TypPozemkuId = CiselnikTypPozemku.Id" +
+                           " LEFT OUTER JOIN CiselnikProdejNeboPronajem ON Pozemek.ProdejNeboPronajemId = CiselnikProdejNeboPronajem.Id" +
+                           " WHERE Pozemek.IdPozemek = @id";
             using (DbConnection dbConnection = new SqlConnection(connString.ConnectionString))
             {
-                return dbConnection.Query<Pozemek>(query, new { id }).SingleOrDefault();
+                Pozemek pozemekZDb = dbConnection.Query<Pozemek, CiselnikTypPozemku, CiselnikProdejNeboPronajem, Pozemek>(query,
+                    map: (pozemek, ciselnikTypPozemku, ciselnikProdejNeboPronajem) =>
+                    {
+                        Pozemek pozemekMapovani = new Pozemek();
+                        if (pozemek != null)
+                        {
+                            pozemekMapovani = pozemek;
+                        }
+                        if (ciselnikTypPozemku != null)
+                        {
+                            pozemekMapovani.TypPozemku = ciselnikTypPozemku;
+                        }
+                        if (ciselnikProdejNeboPronajem != null)
+                        {
+                            pozemekMapovani.ProdejNeboPronajem = ciselnikProdejNeboPronajem;
+                        }
+
+                        return pozemekMapovani;
+                    },
+                param: new { id }, splitOn: "IdPozemek, Id, Id").SingleOrDefault();
+                return pozemekZDb;
             }
         }
 
