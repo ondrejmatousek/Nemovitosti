@@ -76,10 +76,10 @@ namespace Nemovitosti.DataAccessLayer.Implementation
 
         public void Update(Pozemek pozemek)
         {
-            string query = "UPDATE Nemovitosti.dbo.Pozemek SET(NazevInzeratu = @NazevInzeratu, Cena = @Cena, VelikostPozemku = @VelikostPozemku) WHERE Pozemek.IdPozemek = @IdPozemek";
+            string query = "UPDATE Nemovitosti.dbo.Pozemek SET(NazevInzeratu = @NazevInzeratu, Cena = @Cena, VelikostPozemku = @VelikostPozemku, TypPozemkuId = @TypPozemkuId, ProdejNeboPronajemId = @ProdejNeboPronajemId) WHERE Pozemek.IdPozemek = @IdPozemek";
             using (DbConnection dbConnection = new SqlConnection(connString.ConnectionString))
             {
-                int PocetUpravenychRadku = dbConnection.Execute(query, new { IdPozemek = pozemek.IdPozemek, NazevInzeratu = pozemek.NazevInzeratu, Cena = pozemek.Cena, VelikostPozemku = pozemek.VelikostPozemku });
+                int PocetUpravenychRadku = dbConnection.Execute(query, new { IdPozemek = pozemek.IdPozemek, NazevInzeratu = pozemek.NazevInzeratu, Cena = pozemek.Cena, VelikostPozemku = pozemek.VelikostPozemku, TypPozemkuId = pozemek.TypPozemku.Id, ProdejNeboPronajemId = pozemek.ProdejNeboPronajem.Id });
                 if (PocetUpravenychRadku != 1)
                 {
                     throw new Exception();

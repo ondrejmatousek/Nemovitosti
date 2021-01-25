@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nemovitosti.Web.Models.CiselnikyViewModel;
+using System;
 
 namespace Nemovitosti.Web.Models
 {
@@ -9,5 +10,7 @@ namespace Nemovitosti.Web.Models
         public int Cena { get; set; }
         public int VelikostPozemku { get; set; }
         public DateTime DatumVytvoreniInzeratu { get; set; }
+        public int TypPozemkuId { get; set; }
+        public CiselnikTotalProPozemekVM ciselnikTotalProPozemekVM { get; set; }
     }
 }

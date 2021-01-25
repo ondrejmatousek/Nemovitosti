@@ -19,10 +19,8 @@ namespace Nemovitosti.Web.Controllers
 
         public IActionResult Index()
         {
-            BytVM bytVM = new BytVM();
-            var bytZDb = bytService.GetById(2);
-            bytVM = autoMapper.Map(bytZDb);
-            return View(bytVM);
+
+            return View();
         }
 
         public IActionResult Vloz()

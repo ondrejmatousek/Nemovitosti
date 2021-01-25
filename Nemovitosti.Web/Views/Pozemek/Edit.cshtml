@@ -1,4 +1,65 @@
-﻿@{ ViewData["Title"] = "Edit";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+﻿@model Nemovitosti.Web.Models.PozemekVM
+@{ ViewData["Title"] = "Vloz Pozemek";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<h1></h1>
+
+@using (Html.BeginForm("Uloz", "Pozemek", FormMethod.Post))
+{
+<div class="row">
+    <div class="col-12">
+        <h5 class="text-center mb-4">VLOŽENÍ POZEMKU</h5>
+        @Html.DropDownListFor(m => m.TypPozemkuId, Model.ciselnikTotalProPozemekVM.CiselnikTypPozemkuVM, null, new { @class = "form-control" })
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-3 col-form-label text-right">
+                @Html.LabelFor(model => model.NazevInzeratu, new { @style = "font-weight:bold" })
+            </div>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(model => model.NazevInzeratu, new { @class = "form-control" })
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-3 col-form-label text-right">
+                @Html.LabelFor(model => model.Cena, new { @style = "font-weight:bold" })
+            </div>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(model => model.Cena, new { @class = "form-control" })
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-3 col-form-label text-right">
+                @Html.LabelFor(model => model.VelikostPozemku, new { @style = "font-weight:bold" })
+            </div>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(model => model.VelikostPozemku, new { @class = "form-control" })
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-3 col-form-label text-right">
+                @*@Html.LabelFor(model => model.ciselnikTypPozemkuVM, new { @style = "font-weight:bold" })*@
+            </div>
+            <div class="col-6">
+                @*@Html.TextBoxFor(model => model.komplexniFiltr.RodneCislo, new { @class = "form-control" })*@
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-12">
+                <div class="row justify-content-center">
+                    <div class="mr-2">
+                        <button type="submit" class="btn btn-success"> <i class="fa fa-search fa-2x"></i> VYHLEDAT</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>}

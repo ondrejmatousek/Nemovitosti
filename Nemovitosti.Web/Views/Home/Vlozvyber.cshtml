@@ -5,11 +5,11 @@
     <div class="h2 text-center ">Jaký druh nemovitosti chcete prodat?</div>
     <hr />
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
             <div class="row">
-                <div class="col-1"></div>
-                <div class="col-2 text-center DivHoverEffect pt-1">
+                <div class="col-3 col-lg-1"></div>
+                <div class="col-3 col-lg-2 text-center DivHoverEffect pt-1">
                     <a href="@Url.Action("Vloz", "Pozemek")">
                         <img src="@Url.Content("~/pictures/pozemek.png")">
                         <div style="text-decoration: none;">
@@ -17,42 +17,46 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-2 text-center DivHoverEffect pt-1">
-                    <a href="@Url.Action("Vloz", "Byt")">
+                <div class="col-3 col-lg-2 text-center DivHoverEffect pt-1">
+                    <a href="@Url.Action("Index", "Byt")">
                         <img src="@Url.Content("~/pictures/Bytovka.png")" />
                         <div style="text-decoration: none;">
                             <span>Byty</span>
                         </div>
                     </a>
                 </div>
-                <div class="col-2 text-center DivHoverEffect pt-1">
-                    <a href="@Url.Action("Vloz", "Dum")">
+                <div class="col-3 d-lg-none"></div>
+                <div class="col-3 d-lg-none"></div>
+                <div class="col-3 col-lg-2 text-center DivHoverEffect pt-1">
+                    <a href="@Url.Action("Index", "Dum")">
                         <img src="@Url.Content("~/pictures/dum2.png")">
                         <div style="text-decoration: none;">
                             <span>Domy</span>
                         </div>
                     </a>
                 </div>
-                <div class="col-2 text-center DivHoverEffect pt-1">
-                    <a href="@Url.Action("Vloz", "Komercni")">
+                <div class="col-3 col-lg-2 text-center DivHoverEffect pt-1">
+                    <a href="@Url.Action("Index", "Komercni")">
                         <img src="@Url.Content("~/pictures/Komercni.png")">
                         <div style="text-decoration: none;">
                             <span>Komerční</span>
                         </div>
                     </a>
                 </div>
-                <div class="col-2 text-center DivHoverEffect pt-1">
-                    <a href="@Url.Action("Vloz", "Ostatni")">
+                <div class="col-3 d-lg-none"></div>
+                <div class="col-3 d-lg-none"></div>
+                <div class="col-3 col-lg-2 text-center DivHoverEffect pt-1">
+                    <a href="@Url.Action("Index", "Ostatni")">
                         <img src="@Url.Content("~/pictures/Ostatni.png")">
                         <div style="text-decoration: none;">
                             <span>Ostatní</span>
                         </div>
                     </a>
                 </div>
-                <div class="col-1"></div>
+                <div class="col-3 col-lg-1"></div>
             </div>
         </div>
-        <div class="col-2"></div>
+        <div class="col-lg-2"></div>
     </div>
     <hr />
 </div>

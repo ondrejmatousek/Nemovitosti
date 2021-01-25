@@ -57,13 +57,14 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="Tables\Ciselniky" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Byt.sql" />
-    <Build Include="Tables\CiselnikTypPozemku.sql" />
     <Build Include="Tables\Pozemek.sql" />
     <Build Include="Tables\Dum.sql" />
-    <Build Include="Tables\CiselnikProdejNeboPronajem.sql" />
+    <Build Include="Tables\Ciselniky\CiselnikProdejNeboPronajem.sql" />
+    <Build Include="Tables\Ciselniky\CiselnikTypPozemku.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment1.sql" />
