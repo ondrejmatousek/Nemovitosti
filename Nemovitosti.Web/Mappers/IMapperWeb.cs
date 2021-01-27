@@ -22,5 +22,8 @@ namespace Nemovitosti.Web.Mappers
 
         List<CiselnikTypPozemkuVM> Map(List<CiselnikTypPozemku> ciselnikTypPozemku);
         List<CiselnikTypPozemku> Map(List<CiselnikTypPozemkuVM> ciselnikTypPozemkuVM);
+
+        List<CiselnikProdejNeboPronajemVM> Map(List<CiselnikProdejNeboPronajem> ciselnikProdejNeboPronajem);
+        List<CiselnikProdejNeboPronajem> Map(List<CiselnikProdejNeboPronajemVM> ciselnikProdejNeboPronajemVM);
     }
 }

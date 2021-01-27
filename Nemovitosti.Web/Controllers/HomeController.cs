@@ -19,7 +19,11 @@ namespace Nemovitosti.Web.Controllers
 
         public IActionResult Index()
         {
-
+            //Když uložím pozemek, tak chci aby se to přesměrovalo sem, ale aby se zobrazila hláška, že se to správně uložilo.
+            //Viewbag. tempdata fungujou jen po dobu jednoho requestu. proto to v pozemek uložim do tempdata, přesměruju to sem a tady teprve tempdata vložím do viewbagu a zobrazím.
+            ViewBag.Message = TempData["shortMessage"];
+            ViewBag.colorMessage = TempData["colorMessage"];
+            ViewBag.colorBorder = TempData["colorBorder"];
             return View();
         }
 

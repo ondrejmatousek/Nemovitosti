@@ -5,7 +5,7 @@
     [Cena] INT NOT NULL, 
     [VelikostPozemku] INT NOT NULL, 
     [DatumVytvoreniInzeratu] DATETIME2 NOT NULL,
-    [TypPozemkuId] INT NULL
+    [TypPozemkuId] INT NOT NULL
 
     CONSTRAINT [PK_Pozemek] PRIMARY KEY CLUSTERED ([IdPozemek] ASC), 
     [ProdejNeboPronajemId] INT NOT NULL, 

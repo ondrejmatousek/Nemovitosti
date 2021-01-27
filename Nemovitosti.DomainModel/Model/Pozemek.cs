@@ -13,8 +13,8 @@ namespace Nemovitosti.DomainModel.Model
         public string NazevInzeratu { get; set; }
         public int Cena { get; set; }
         public int VelikostPozemku { get; set; }
-        public CiselnikTypPozemku TypPozemku { get; set; } //číselník Nemovitosti.dbo.TypPozemku
-        public CiselnikProdejNeboPronajem ProdejNeboPronajem { get; set; } //číselník Nemovitosti.dbo.ProdejNeboPronajem
+        public CiselnikTypPozemku CiselnikTypPozemku { get; set; } //číselník Nemovitosti.dbo.TypPozemku
+        public CiselnikProdejNeboPronajem CiselnikProdejNeboPronajem { get; set; } //číselník Nemovitosti.dbo.ProdejNeboPronajem
         public DateTime DatumVytvoreniInzeratu { get; set; }
 
         public override bool Equals(object obj)
@@ -24,14 +24,14 @@ namespace Nemovitosti.DomainModel.Model
                    NazevInzeratu == pozemek.NazevInzeratu &&
                    Cena == pozemek.Cena &&
                    VelikostPozemku == pozemek.VelikostPozemku &&
-                   EqualityComparer<CiselnikTypPozemku>.Default.Equals(TypPozemku, pozemek.TypPozemku) &&
-                   EqualityComparer<CiselnikProdejNeboPronajem>.Default.Equals(ProdejNeboPronajem, pozemek.ProdejNeboPronajem) &&
+                   EqualityComparer<CiselnikTypPozemku>.Default.Equals(CiselnikTypPozemku, pozemek.CiselnikTypPozemku) &&
+                   EqualityComparer<CiselnikProdejNeboPronajem>.Default.Equals(CiselnikProdejNeboPronajem, pozemek.CiselnikProdejNeboPronajem) &&
                    DatumVytvoreniInzeratu == pozemek.DatumVytvoreniInzeratu;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(IdPozemek, NazevInzeratu, Cena, VelikostPozemku, TypPozemku, ProdejNeboPronajem, DatumVytvoreniInzeratu);
+            return HashCode.Combine(IdPozemek, NazevInzeratu, Cena, VelikostPozemku, CiselnikTypPozemku, CiselnikProdejNeboPronajem, DatumVytvoreniInzeratu);
         }
 
         public override string ToString()

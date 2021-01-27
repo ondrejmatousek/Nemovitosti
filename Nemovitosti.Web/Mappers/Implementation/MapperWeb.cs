@@ -16,8 +16,12 @@ namespace Nemovitosti.Web.Mappers.Implementation
             {
                 cfg.CreateMap<BytVM, Byt>();
                 cfg.CreateMap<Byt, BytVM>();
-                cfg.CreateMap<PozemekVM, Pozemek>();
-                cfg.CreateMap<Pozemek, PozemekVM>();
+                cfg.CreateMap<PozemekVM, Pozemek>()
+                .ForMember(dest => dest.CiselnikTypPozemku, opt => opt.MapFrom(src => src.CiselnikTypPozemkuVM))
+                .ForMember(dest => dest.CiselnikProdejNeboPronajem, opt => opt.MapFrom(src => src.CiselnikProdejNeboPronajemVM));
+                cfg.CreateMap<Pozemek, PozemekVM>()
+                .ForMember(dest => dest.CiselnikTypPozemkuVM, opt => opt.MapFrom(src => src.CiselnikTypPozemku))
+                .ForMember(dest => dest.CiselnikProdejNeboPronajemVM, opt => opt.MapFrom(src => src.CiselnikProdejNeboPronajem));
                 cfg.CreateMap<CiselnikTypPozemkuVM, CiselnikTypPozemku>();
                 cfg.CreateMap<CiselnikTypPozemku, CiselnikTypPozemkuVM>();
                 cfg.CreateMap<CiselnikProdejNeboPronajemVM, CiselnikProdejNeboPronajem>();
@@ -83,8 +87,20 @@ namespace Nemovitosti.Web.Mappers.Implementation
         }
         public List<CiselnikTypPozemku> Map(List<CiselnikTypPozemkuVM> ciselnikTypPozemkuListVM)
         {
-            List<CiselnikTypPozemku> ciselnikTypPozemkuVMList = autoMapper.Map<List<CiselnikTypPozemkuVM>, List<CiselnikTypPozemku>>(ciselnikTypPozemkuListVM);
-            return ciselnikTypPozemkuVMList;
+            List<CiselnikTypPozemku> ciselnikTypPozemkuList = autoMapper.Map<List<CiselnikTypPozemkuVM>, List<CiselnikTypPozemku>>(ciselnikTypPozemkuListVM);
+            return ciselnikTypPozemkuList;
+        }
+
+        //ListCiselnikProdejNeboPronajem
+        public List<CiselnikProdejNeboPronajemVM> Map(List<CiselnikProdejNeboPronajem> ciselnikProdejNeboPronajemList)
+        {
+            List<CiselnikProdejNeboPronajemVM> ciselnikProdejNeboPronajemVMList = autoMapper.Map<List<CiselnikProdejNeboPronajem>, List<CiselnikProdejNeboPronajemVM>>(ciselnikProdejNeboPronajemList);
+            return ciselnikProdejNeboPronajemVMList;
+        }
+        public List<CiselnikProdejNeboPronajem> Map(List<CiselnikProdejNeboPronajemVM> ciselnikProdejNeboPronajemVMList)
+        {
+            List<CiselnikProdejNeboPronajem> ciselnikProdejNeboPronajemList = autoMapper.Map<List<CiselnikProdejNeboPronajemVM>, List<CiselnikProdejNeboPronajem>>(ciselnikProdejNeboPronajemVMList);
+            return ciselnikProdejNeboPronajemList;
         }
     }
 }

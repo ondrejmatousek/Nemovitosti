@@ -33,8 +33,8 @@ namespace Nemovitosti.DataAccessLayer.Implementation
                     pozemek.Cena,
                     pozemek.VelikostPozemku,
                     pozemek.DatumVytvoreniInzeratu,
-                    TypPozemkuId = pozemek.TypPozemku.Id,
-                    ProdejNeboPronajemId = pozemek.ProdejNeboPronajem.Id
+                    TypPozemkuId = pozemek.CiselnikTypPozemku.Id,
+                    ProdejNeboPronajemId = pozemek.CiselnikProdejNeboPronajem.Id
                 }).SingleOrDefault();
                 pozemek.IdPozemek = pozemekZDb.IdPozemek;
             }
@@ -60,11 +60,11 @@ namespace Nemovitosti.DataAccessLayer.Implementation
                         }
                         if (ciselnikTypPozemku != null)
                         {
-                            pozemekMapovani.TypPozemku = ciselnikTypPozemku;
+                            pozemekMapovani.CiselnikTypPozemku = ciselnikTypPozemku;
                         }
                         if (ciselnikProdejNeboPronajem != null)
                         {
-                            pozemekMapovani.ProdejNeboPronajem = ciselnikProdejNeboPronajem;
+                            pozemekMapovani.CiselnikProdejNeboPronajem = ciselnikProdejNeboPronajem;
                         }
 
                         return pozemekMapovani;
@@ -79,7 +79,7 @@ namespace Nemovitosti.DataAccessLayer.Implementation
             string query = "UPDATE Nemovitosti.dbo.Pozemek SET(NazevInzeratu = @NazevInzeratu, Cena = @Cena, VelikostPozemku = @VelikostPozemku, TypPozemkuId = @TypPozemkuId, ProdejNeboPronajemId = @ProdejNeboPronajemId) WHERE Pozemek.IdPozemek = @IdPozemek";
             using (DbConnection dbConnection = new SqlConnection(connString.ConnectionString))
             {
-                int PocetUpravenychRadku = dbConnection.Execute(query, new { IdPozemek = pozemek.IdPozemek, NazevInzeratu = pozemek.NazevInzeratu, Cena = pozemek.Cena, VelikostPozemku = pozemek.VelikostPozemku, TypPozemkuId = pozemek.TypPozemku.Id, ProdejNeboPronajemId = pozemek.ProdejNeboPronajem.Id });
+                int PocetUpravenychRadku = dbConnection.Execute(query, new { IdPozemek = pozemek.IdPozemek, NazevInzeratu = pozemek.NazevInzeratu, Cena = pozemek.Cena, VelikostPozemku = pozemek.VelikostPozemku, TypPozemkuId = pozemek.CiselnikTypPozemku.Id, ProdejNeboPronajemId = pozemek.CiselnikProdejNeboPronajem.Id });
                 if (PocetUpravenychRadku != 1)
                 {
                     throw new Exception();

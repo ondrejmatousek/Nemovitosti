@@ -32,9 +32,11 @@ namespace Nemovitosti.CompositionRoot
 
             //Ciselniky DAL
             IocContainer.Register<ICiselnikTypPozemkuDao, CiselnikTypPozemkuDao>(Reuse.Singleton);
+            IocContainer.Register<ICiselnikProdejNeboPronajemDao, CiselnikProdejNeboPronajemDao>(Reuse.Singleton);
 
             //Ciselniky Service
             IocContainer.Register<ICiselnikTypPozemkuService, CiselnikTypPozemkuService>(Reuse.Singleton);
+            IocContainer.Register<ICiselnikProdejNeboPronajemService, CiselnikProdejNeboPronajemService>(Reuse.Singleton);
 
             DalInitializer.Init();
 
@@ -63,9 +65,11 @@ namespace Nemovitosti.CompositionRoot
 
             //Ciselniky DAL
             services.AddSingleton<ICiselnikTypPozemkuDao>(s => new CiselnikTypPozemkuDao(stringSettings));
+            services.AddSingleton<ICiselnikProdejNeboPronajemDao>(s => new CiselnikProdejNeboPronajemDao(stringSettings));
 
             //Ciselniky Service
             services.AddSingleton<ICiselnikTypPozemkuService>(s => new CiselnikTypPozemkuService(new CiselnikTypPozemkuDao(stringSettings)));
+            services.AddSingleton<ICiselnikProdejNeboPronajemService>(s => new CiselnikProdejNeboPronajemService(new CiselnikProdejNeboPronajemDao(stringSettings)));
 
             services.AddSingleton<LoggingAspect>();
 

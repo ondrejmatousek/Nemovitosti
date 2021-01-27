@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @*Aby ti fungovala klient side validace přes dataannotations, musíš zde mít následující 2 řádky!!!!!!!!!!!*@
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="https://kit.fontawesome.com/f84fadafd5.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -110,10 +116,40 @@
         </div>
 
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Modal -->
+    <div class="modal fade" id="infoDiv" tabindex="-1" role="dialog" aria-labelledby="titulekInfo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content @ViewBag.colorBorder ">
+
+                <div class="modal-header @ViewBag.colorMessage">
+
+                    <h5 class="modal-title" id="titulekInfo">Zpráva stránky</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="zpravaStranky"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @RenderSection("Scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            $('#zpravaStranky').html('@Html.Raw(@ViewBag.Message?.ToString().Replace("'","\"").Replace(Environment.NewLine, "<br/>"))');
+
+            if ($('#zpravaStranky').text() != "") {
+                $('#infoDiv').modal();
+            }
+        });
+    </script>
 
 </body>
 </html>
