@@ -38,13 +38,15 @@ namespace Nemovitosti.CompositionRoot
             IocContainer.Register<ICiselnikTypPozemkuService, CiselnikTypPozemkuService>(Reuse.Singleton);
             IocContainer.Register<ICiselnikProdejNeboPronajemService, CiselnikProdejNeboPronajemService>(Reuse.Singleton);
 
-            DalInitializer.Init();
+
 
             //logovni vyjimek
             IocContainer.Register<LoggingAspect>();
 
-
+            IocContainer.Intercept<IPozemekService, LoggingAspect>();
             IocContainer.Intercept<IBytService, LoggingAspect>();
+
+            DalInitializer.Init();
         }
     }
 
@@ -72,8 +74,6 @@ namespace Nemovitosti.CompositionRoot
             services.AddSingleton<ICiselnikProdejNeboPronajemService>(s => new CiselnikProdejNeboPronajemService(new CiselnikProdejNeboPronajemDao(stringSettings)));
 
             services.AddSingleton<LoggingAspect>();
-
-
 
             return services;
         }

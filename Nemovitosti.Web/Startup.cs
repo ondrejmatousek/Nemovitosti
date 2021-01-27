@@ -1,15 +1,20 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Castle.DynamicProxy;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Nemovitosti.CompositionRoot;
+using Nemovitosti.CompositionRoot.Aop;
+using Nemovitosti.ServiceLayer.Implementation;
+using Nemovitosti.ServiceLayer.Interface;
 using Nemovitosti.Web.Mappers;
 using Nemovitosti.Web.Mappers.Implementation;
 using System.Configuration;
 
 namespace Nemovitosti.Web
 {
+
     public class Startup
     {
 
@@ -29,6 +34,12 @@ namespace Nemovitosti.Web
             services.AddSharedData(stringSettings);
             //Mimo Core se to dělalo v Global.asax, tedka Mapper doregistruju tady 
             services.AddSingleton<IMapperWeb, MapperWeb>();
+
+            //Aby fungovalo AOP - loggingAspects
+            services.AddSingleton(new ProxyGenerator());
+            services.AddScoped<IInterceptor, LoggingAspect>();
+            services.AddProxiedScoped<IPozemekService, PozemekService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +68,8 @@ namespace Nemovitosti.Web
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
         }
     }
 }
