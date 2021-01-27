@@ -6,27 +6,27 @@ namespace Nemovitosti.ServiceLayer.Implementation
 {
     public class PozemekService : IPozemekService
     {
-        private readonly IPozemekDao pozemekDao;
+        private readonly IPozemekDao _pozemekDao;
         public PozemekService(IPozemekDao pozemekDao)
         {
-            this.pozemekDao = pozemekDao;
+            _pozemekDao = pozemekDao;
         }
 
         public void Insert(Pozemek pozemek)
         {
-            pozemekDao.Insert(pozemek);
+            _pozemekDao.Insert(pozemek);
         }
         public Pozemek GetById(int id)
         {
-            return pozemekDao.GetById(id);
+            return _pozemekDao.GetById(id);
         }
         public void Update(Pozemek pozemek)
         {
-            pozemekDao.Update(pozemek);
+            _pozemekDao.Update(pozemek);
         }
         public void Delete(Pozemek pozemek)
         {
-            pozemekDao.Delete(pozemek);
+            _pozemekDao.Delete(pozemek);
         }
     }
 }

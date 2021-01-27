@@ -25,10 +25,12 @@ namespace Nemovitosti.CompositionRoot
             IocContainer.Register<IBytDao, BytDao>(Reuse.Singleton);
             IocContainer.Register<IDumDao, DumDao>(Reuse.Singleton);
             IocContainer.Register<IPozemekDao, PozemekDao>(Reuse.Singleton);
+            IocContainer.Register<IUzivatelDao, UzivatelDao>(Reuse.Singleton);
 
             IocContainer.Register<IBytService, BytService>(Reuse.Singleton);
             IocContainer.Register<IDumService, DumService>(Reuse.Singleton);
             IocContainer.Register<IPozemekService, PozemekService>(Reuse.Singleton);
+            IocContainer.Register<IUzivatelService, UzivatelService>(Reuse.Singleton);
 
             //Ciselniky DAL
             IocContainer.Register<ICiselnikTypPozemkuDao, CiselnikTypPozemkuDao>(Reuse.Singleton);
@@ -60,10 +62,12 @@ namespace Nemovitosti.CompositionRoot
             services.AddSingleton<IBytDao>(s => new BytDao(stringSettings));
             services.AddSingleton<IDumDao>(s => new DumDao(stringSettings));
             services.AddSingleton<IPozemekDao>(s => new PozemekDao(stringSettings));
+            services.AddSingleton<IUzivatelDao>(s => new UzivatelDao(stringSettings));
 
             services.AddSingleton<IBytService>(s => new BytService(new BytDao(stringSettings)));
             services.AddSingleton<IDumService>(s => new DumService(new DumDao(stringSettings)));
             services.AddSingleton<IPozemekService>(s => new PozemekService(new PozemekDao(stringSettings)));
+            services.AddSingleton<IUzivatelService>(s => new UzivatelService(new UzivatelDao(stringSettings)));
 
             //Ciselniky DAL
             services.AddSingleton<ICiselnikTypPozemkuDao>(s => new CiselnikTypPozemkuDao(stringSettings));

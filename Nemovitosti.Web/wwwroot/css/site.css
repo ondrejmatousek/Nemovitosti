@@ -147,3 +147,11 @@ body {
 .mensiPismoDoInputu {
     font-size: inherit;
 }
+
+.input-validation-error {
+    border-color: #dc3545;
+}
+
+.input-validation-error {
+    border-color: #dc3545;
+}

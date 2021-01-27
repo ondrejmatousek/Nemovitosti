@@ -1,6 +1,7 @@
 ﻿using Castle.DynamicProxy;
 using NLog;
 using System;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Nemovitosti.CompositionRoot.Aop
@@ -13,6 +14,10 @@ namespace Nemovitosti.CompositionRoot.Aop
             try
             {
                 invocation.Proceed();
+            }
+            catch (SqlException sqlEx)
+            {
+                throw sqlEx;
             }
             catch (Exception exception)
             {
