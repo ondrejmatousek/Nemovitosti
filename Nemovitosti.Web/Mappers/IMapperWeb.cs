@@ -1,6 +1,7 @@
 ﻿using Nemovitosti.DomainModel.Model;
 using Nemovitosti.DomainModel.Model.Ciselniky;
 using Nemovitosti.Web.Models;
+using Nemovitosti.Web.Models.Account;
 using Nemovitosti.Web.Models.CiselnikyViewModel;
 using System.Collections.Generic;
 
@@ -13,6 +14,9 @@ namespace Nemovitosti.Web.Mappers
 
         PozemekVM Map(Pozemek pozemek);
         Pozemek Map(PozemekVM pozemekVM);
+
+        UzivatelVM Map(Uzivatel uzivatel);
+        Uzivatel Map(UzivatelVM uzivatelVM);
 
         CiselnikTypPozemkuVM Map(CiselnikTypPozemku ciselnikTypPozemku);
         CiselnikTypPozemku Map(CiselnikTypPozemkuVM ciselnikTypPozemkuVM);

@@ -19,6 +19,10 @@ namespace Nemovitosti.ServiceLayer.Implementation
         {
             return _uzivatelDao.GetById(id);
         }
+        public Uzivatel GetByEmailAndPassword(Uzivatel uzivatel)
+        {
+            return _uzivatelDao.GetByEmailAndPassword(uzivatel);
+        }
         public void Update(Uzivatel uzivatel)
         {
             _uzivatelDao.Update(uzivatel);

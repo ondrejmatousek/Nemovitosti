@@ -2,6 +2,7 @@
 using Nemovitosti.DomainModel.Model;
 using Nemovitosti.DomainModel.Model.Ciselniky;
 using Nemovitosti.Web.Models;
+using Nemovitosti.Web.Models.Account;
 using Nemovitosti.Web.Models.CiselnikyViewModel;
 using System.Collections.Generic;
 
@@ -16,6 +17,8 @@ namespace Nemovitosti.Web.Mappers.Implementation
             {
                 cfg.CreateMap<BytVM, Byt>();
                 cfg.CreateMap<Byt, BytVM>();
+                cfg.CreateMap<Uzivatel, UzivatelVM>();
+                cfg.CreateMap<UzivatelVM, Uzivatel>();
                 cfg.CreateMap<PozemekVM, Pozemek>()
                 .ForMember(dest => dest.CiselnikTypPozemku, opt => opt.MapFrom(src => src.CiselnikTypPozemkuVM))
                 .ForMember(dest => dest.CiselnikProdejNeboPronajem, opt => opt.MapFrom(src => src.CiselnikProdejNeboPronajemVM));
@@ -53,6 +56,17 @@ namespace Nemovitosti.Web.Mappers.Implementation
         {
             PozemekVM pozemekVM = autoMapper.Map<Pozemek, PozemekVM>(pozemek);
             return pozemekVM;
+        }
+
+        public Uzivatel Map(UzivatelVM uzivatelVM)
+        {
+            Uzivatel uzivatel = autoMapper.Map<UzivatelVM, Uzivatel>(uzivatelVM);
+            return uzivatel;
+        }
+        public UzivatelVM Map(Uzivatel uzivatel)
+        {
+            UzivatelVM uzivatelVM = autoMapper.Map<Uzivatel, UzivatelVM>(uzivatel);
+            return uzivatelVM;
         }
 
         //CiselnikTypPozemku

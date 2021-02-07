@@ -6,6 +6,7 @@ namespace Nemovitosti.DataAccessLayer.Interface
     {
         void Insert(Uzivatel uzivatel);
         Uzivatel GetById(int Id);
+        Uzivatel GetByEmailAndPassword(Uzivatel uzivatel);
         void Update(Uzivatel uzivatel);
     }
 }

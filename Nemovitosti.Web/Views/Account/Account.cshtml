@@ -1,0 +1,12 @@
+﻿@{ ViewData["Title"] = "Můj účet";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<h4>@ViewData["Title"]</h4>
+
+@if (HttpContextAccessor.HttpContext.Session.GetString("SessionUserEmail") != null)
+{
+    <p>Ahoj tady je stránka účtu</p>
+}

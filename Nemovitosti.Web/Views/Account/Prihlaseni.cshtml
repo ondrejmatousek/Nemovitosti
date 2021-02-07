@@ -1,0 +1,36 @@
+﻿@model Nemovitosti.Web.Models.Account.UzivatelVM
+@{ ViewData["Title"] = "Přihlášení";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="row">
+
+    <div class="col-md-6 mx-auto">
+        @using (Html.BeginForm("Prihlasit", "Account", FormMethod.Post))
+        {
+<h4>Přihlášení</h4>
+                <hr />
+                                <div class="row Pismo">
+                                    <div class="col-12">
+                                        <div class="row pb-2">
+                                            <div class="col-lg-12">
+                                                @Html.LabelFor(l => l.Email)
+                                                @Html.TextBoxFor(t => t.Email, new { @class = "form-control " })
+                                            </div>
+                                            <div class="col-lg-12">
+                                                @Html.ValidationMessageFor(v => v.Email, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="row pb-2">
+                                            <div class="col-lg-12">
+                                                @Html.LabelFor(l => l.Heslo)
+                                                @Html.TextBoxFor(t => t.Heslo, new { @class = "form-control" })
+                                            </div>
+                                            <div class="col-lg-12">
+                                                @Html.ValidationMessageFor(v => v.Heslo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                                <button type="submit" class="btn btn-primary Pismo">Přihlásit se</button>}
+    </div>
+</div>

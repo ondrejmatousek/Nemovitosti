@@ -1,6 +1,7 @@
 ﻿using Castle.DynamicProxy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,6 +11,7 @@ using Nemovitosti.ServiceLayer.Implementation;
 using Nemovitosti.ServiceLayer.Interface;
 using Nemovitosti.Web.Mappers;
 using Nemovitosti.Web.Mappers.Implementation;
+using System;
 using System.Configuration;
 
 namespace Nemovitosti.Web
@@ -30,7 +32,12 @@ namespace Nemovitosti.Web
         {
             var stringSettings = new ConnectionStringSettings("Connection", Configuration.GetConnectionString("ConnectionStringLocal"));
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            services.AddSession();
+            services.AddDistributedMemoryCache();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
             services.AddSharedData(stringSettings);
             //Mimo Core se to dělalo v Global.asax, tedka Mapper doregistruju tady 
             services.AddSingleton<IMapperWeb, MapperWeb>();
@@ -60,7 +67,10 @@ namespace Nemovitosti.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
